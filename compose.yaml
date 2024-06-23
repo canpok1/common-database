@@ -1,5 +1,5 @@
 services:
-  db:
+  common-db:
     image: "mariadb:11.4"
     env_file:
       - ".env"
