@@ -1,0 +1,23 @@
+services:
+  db:
+    image: "mariadb:11.4"
+    env_file:
+      - ".env"
+    volumes:
+      - "./init:/docker-entrypoint-initdb.d"
+      - "db-store:/var/lib/mysql"
+    ports:
+      - "33306:3306"
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping"]
+      start_period: "10s"
+      interval: "10s"
+      retries: 30
+    restart: always
+
+volumes:
+  db-store:
+
+networks:
+  default:
+    name: common-database-network
