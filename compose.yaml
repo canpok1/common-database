@@ -14,6 +14,8 @@ services:
       interval: "10s"
       retries: 30
     restart: always
+  common-redis:
+    image: "redis:7.4",
 
 volumes:
   db-store:
